@@ -7,7 +7,7 @@ steps:
   args:
   - '-c'
   - |
-    cd hello-world
+    cd $_FUNCTION_FOLDER
     rm serverless.yml
     gsutil cp ${_BUCKET_PATH}/serverless.yml ./serverless.yml
 # - id: 'encrypt code'
@@ -37,6 +37,8 @@ steps:
   args: 
   - '-c'
   - |
+    ls
+    cd $_FUNCTION_FOLDER
     ls
     npm i serverless -g
     npm install
