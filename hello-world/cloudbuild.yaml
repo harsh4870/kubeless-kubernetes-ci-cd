@@ -40,15 +40,13 @@ steps:
     ls
     cd $_FUNCTION_FOLDER
     ls
-    npm i serverless -g
     npm install
-- id: kubectl-apply
-  name: 'gcr.io/cloud-builders/kubectl'
+- id: serverless-apply
+  name: 'harshmanvar/gcr-kubectl-serveless'
   entrypoint: 'sh'
   args: 
   - '-c'
   - |
-    npm i serverless -g
     serverless deploy -v
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
