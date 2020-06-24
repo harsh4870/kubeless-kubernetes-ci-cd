@@ -42,6 +42,12 @@ steps:
     ls
     npm i serverless -g
     npm install
+- id: kubectl-apply
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
     serverless deploy -v
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
