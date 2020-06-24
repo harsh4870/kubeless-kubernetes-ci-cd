@@ -43,3 +43,6 @@ steps:
     npm i serverless -g
     npm install
     serverless deploy -v
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
