@@ -1,5 +1,5 @@
 substitutions:
-    _CLOUDSDK_COMPUTE_ZONE: us-central1-a  # default value
+    _CLOUDSDK_COMPUTE_ZONE: us-central1-c  # default value
     _CLOUDSDK_CONTAINER_CLUSTER: $_CLOUDSDK_CONTAINER_CLUSTER      # default value
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
