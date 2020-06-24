@@ -31,6 +31,14 @@ steps:
 #     rm -rf file:
 #     rm /builder/home/.pyarmor_capsule.zip
 #     rm /builder/home/.pyarmor/license.lic
+# Configure a kubectl workspace for this project
+- name: gcr.io/cloud-builders/kubectl
+  args:
+    - cluster-info
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
+  - KUBECONFIG=/workspace/.kube/config
 - id: 'npm install dependency'
   name: 'gcr.io/cloud-builders/npm'
   entrypoint: 'sh'
@@ -41,15 +49,9 @@ steps:
     cd $_FUNCTION_FOLDER
     ls
     npm install
-- id: serverless-apply
-  name: 'harshmanvar/gcr-kubectl-serveless'
-  entrypoint: 'sh'
-  args: 
-  - '-c'
-  - |
-    cd $_FUNCTION_FOLDER
-    ls
+    npm i serverless -g
     serverless deploy -v
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
+  - KUBECONFIG=/workspace/.kube/config
+
+  
