@@ -47,6 +47,7 @@ steps:
   args: 
   - '-c'
   - |
+    ls
     serverless deploy -v
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
