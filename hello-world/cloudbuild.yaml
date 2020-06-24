@@ -8,8 +8,8 @@ steps:
   - '-c'
   - |
     cd hello-world
-    rm serverless.yaml
-    gsutil cp ${_BUCKET_PATH}/serverless.yaml ./serverless.yaml
+    rm serverless.yml
+    gsutil cp ${_BUCKET_PATH}/serverless.yml ./serverless.yml
 # - id: 'encrypt code'
 #   name: 'gcr.io/$PROJECT_ID/pyarmor'
 #   entrypoint: 'sh'
