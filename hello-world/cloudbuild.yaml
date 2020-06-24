@@ -1,0 +1,41 @@
+substitutions:
+    _CLOUDSDK_COMPUTE_ZONE: us-central1-a  # default value
+    _CLOUDSDK_CONTAINER_CLUSTER: $_CLOUDSDK_CONTAINER_CLUSTER      # default value
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    rm serverless.yaml
+    gsutil cp ${_BUCKET_PATH}/serverless.yaml ./serverless.yaml
+# - id: 'encrypt code'
+#   name: 'gcr.io/$PROJECT_ID/pyarmor'
+#   entrypoint: 'sh'
+#   args:
+#   - '-c'
+#   - |
+#     ls
+#     rm -rf sql_scripts
+#     ls
+#     pyarmor obfuscate --recursive run.py
+#     cp app/newrelic.ini dist/app/
+#     cp -r app/static dist/app/
+#     cp -r app/templates/ dist/app/
+#     cp -r app/database/sql.properties dist/app/database/
+#     rm -rf app
+#     rm run.py
+#     cp -ar dist/* .
+#     rm -rf dist
+#     rm -rf file:
+#     rm /builder/home/.pyarmor_capsule.zip
+#     rm /builder/home/.pyarmor/license.lic
+- id: 'npm install dependency'
+  name: 'gcr.io/cloud-builders/npm'
+  args: 
+  - '-c'
+  - |
+    ls
+    npm i serverless -g
+    npm install
+    serverless deploy -v
