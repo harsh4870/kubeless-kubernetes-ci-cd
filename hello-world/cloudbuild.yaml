@@ -48,6 +48,7 @@ steps:
   args: 
   - '-c'
   - |
+    npm i serverless -g
     serverless deploy -v
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
