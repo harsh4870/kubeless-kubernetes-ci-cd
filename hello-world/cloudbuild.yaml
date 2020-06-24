@@ -33,6 +33,7 @@ steps:
 #     rm /builder/home/.pyarmor/license.lic
 - id: 'npm install dependency'
   name: 'gcr.io/cloud-builders/npm'
+  entrypoint: 'sh'
   args: 
   - '-c'
   - |
