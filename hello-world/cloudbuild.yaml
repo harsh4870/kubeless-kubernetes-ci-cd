@@ -48,8 +48,11 @@ steps:
     ls
     cd $_FUNCTION_FOLDER
     ls
+    npm install serverless-python-requirements
     npm install
     npm i serverless -g
+    source venv/bin/activate
+    pip install -r requirements.txt
     serverless deploy -v
   env:
   - KUBECONFIG=/workspace/.kube/config
