@@ -21,6 +21,11 @@ provider:
 
 plugins:
   - serverless-kubeless
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+     dockerizePip: non-linux
 
 functions:
   hello:
