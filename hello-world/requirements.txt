@@ -3,7 +3,7 @@ botocore==1.17.9
 docutils==0.15.2
 jmespath==0.10.0
 pika==1.1.0
-Pillow==7.1.2
+Pillow==8.1.1
 python-dateutil==2.8.1
 s3transfer==0.3.3
 six==1.15.0
